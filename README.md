@@ -7,6 +7,7 @@ Attached are the two circuit diagrams used to create the frequency to voltage co
 I also plan on designing a PCB board for the circuit I used to make it cleaner and easier to reproduce.
 
 Parts used:
+
 Arduino Uno: https://www.amazon.com/Devbattles-Arduino-Uno-Microcontroller-ATmega328/dp/B01L21Y916/ref=sr_1_1_sspa?ie=UTF8&qid=1533921893&sr=8-1-spons&keywords=arduino+uno+-+r3&psc=1
 
 LED Strips: https://www.amazon.com/gp/product/B018X04ES2/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1

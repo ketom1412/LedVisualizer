@@ -29,6 +29,9 @@ http://mathscinotes.com/2014/03/a-simple-frequency-to-voltage-converter/
 Circuit for volume check:
 https://www.instructables.com/id/Arduino-Audio-Input/
 
+Circuit for amplification:
+https://forum.arduino.cc/index.php?topic=558137.0
+
 Youtube Video that inspired me:
 https://www.youtube.com/watch?v=lU1GVVU9gLU
 

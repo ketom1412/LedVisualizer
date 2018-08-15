@@ -9,6 +9,8 @@ I also plan on designing a PCB board for the circuit I used to make it cleaner a
 Note:
 I won't be adding in the full circuit diagram since I believe if you want to reproduce this project its important to understand how this circuit works. This involves looking at the resources provided and testing it out.
 
+The numbers I added to the volume check and the frequency value is for tuning purposes, since I want certain songs to be a certain color when they're played. You can play around with these values for however you see fit.
+
 Parts used:
 
 Arduino Uno: https://www.amazon.com/Devbattles-Arduino-Uno-Microcontroller-ATmega328/dp/B01L21Y916/ref=sr_1_1_sspa?ie=UTF8&qid=1533921893&sr=8-1-spons&keywords=arduino+uno+-+r3&psc=1

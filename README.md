@@ -9,7 +9,7 @@ I also plan on designing a PCB board for the circuit I used to make it cleaner a
 Note:
 I won't be adding in the full circuit diagram since I believe if you want to reproduce this project its important to understand how this circuit works. This involves looking at the resources provided and testing it out.
 
-The numbers I added to the volume check and the frequency value is for tuning purposes, since I want certain songs to be a certain color when they're played. You can play around with these values for however you see fit.
+The numbers I added to the volume check and the frequency value is for tuning purposes, since I want certain songs to be a certain color when they're played or I want the animation to have less light. For the volume, the higher the number, the less light display you will have, and for the freq, just search up the HSV color space and add on to it since it goes in a 360 circle. You can play around with these values for however you see fit.
 
 Parts used:
 

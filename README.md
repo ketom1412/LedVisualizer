@@ -2,7 +2,7 @@
 
 This project allows you to input an audio file live into an arduino. It should read in the frequency and convert it into a voltage which allows you to see the audio as a sine wave. A good representation of this would be like the sound wave shown in soundcloud. Based on the frequency it should respond with a certain color allowing you to visualize the sound wave on the LED strip. 
 
-Attached are the three resources for circuit diagrams used to create the frequency to voltage converter as well as the code used to control the led strip. I've gotten the circuit to read in volume from 0-1023 which is what the analog pins read to and used these values to animate the light strip from light to no light. 
+Attached are the three resources for circuit diagrams used to create the frequency to voltage converter as well as the code used to control the led strip. I've gotten the circuit to read in volume from 0-1023 which is what the analog pins read to and used these values to animate the light strip from light to no light. I have also attached a video of a demo of the working project!
 
 I also plan on designing a PCB board for the circuit I used to make it cleaner and easier to reproduce.
 

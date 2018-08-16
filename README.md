@@ -26,7 +26,7 @@ https://www.amazon.com/gp/product/B01LXN7MN3/ref=oh_aui_detailpage_o01_s00?ie=UT
 Circuit requires a 12V power supply:
 https://www.amazon.com/gp/product/B01GD4ZQRS/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1
 
-Circuit requires 12V power supply
+Circuit requires 12V power supply:
 http://mathscinotes.com/2014/03/a-simple-frequency-to-voltage-converter/
 
 Circuit for volume check:

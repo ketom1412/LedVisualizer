@@ -2,7 +2,7 @@
 
 This project allows you to input an audio file live into an arduino. It should read in the frequency and convert it into a voltage which allows you to see the audio as a sine wave. A good representation of this would be like the sound wave shown in soundcloud. Based on the frequency it should respond with a certain color allowing you to visualize the sound wave on the LED strip. 
 
-Attached are the three resources for circuit diagrams used to create the frequency to voltage converter as well as the code used to control the led strip. I've gotten the circuit to read in volume from 0-1023 which is what the analog pins read to and used these values to animate the light strip from light to no light. 
+Attached are the resources for circuit diagrams used to create the frequency to voltage converter as well as the code used to control the led strip. I've gotten the circuit to read in volume from 0-1023 which is what the analog pins read to and used these values to animate the light strip from light to no light. 
 
 Update to base project:
 I have added in three 1k potentiometers to control the animation, color tune, and brightness of the lights. The animation means that how often am I letting the LEDS light up, colot tune means you can alter the colors live, and brightness to control how bright the LEDS are. I map them all to 0-255 so I can use them in the built in functions. I am also adding in a switch so that I can use the low pass filter and non low pass filter volume control. I do this since I have noticed that some songs have a better light show from the bass frequency controling the animation then when I use the full frequency.
@@ -28,12 +28,6 @@ https://www.amazon.com/gp/product/B01GD4ZQRS/ref=oh_aui_detailpage_o00_s00?ie=UT
 
 Circuit requires 12V power supply:
 http://mathscinotes.com/2014/03/a-simple-frequency-to-voltage-converter/
-
-Circuit for volume check:
-https://www.instructables.com/id/Arduino-Audio-Input/
-
-Circuit for amplification:
-https://forum.arduino.cc/index.php?topic=558137.0
 
 Youtube Video that inspired me:
 https://www.youtube.com/watch?v=lU1GVVU9gLU

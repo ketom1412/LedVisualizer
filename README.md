@@ -12,7 +12,7 @@ I have also attached a video of a demo of the working project!
 I also plan on designing a PCB board for the circuit I used to make it cleaner and easier to reproduce.
 
 Note:
-I won't be adding in the full circuit diagram since I believe if you want to reproduce this project its important to understand how this circuit works. This involves looking at the resources provided and testing it out.
+I won't be adding in the full circuit diagram since I believe if you want to reproduce this project its important to understand how this circuit works. This involves looking at the resources provided, researching, and testing it out.
 
 Parts used:
 

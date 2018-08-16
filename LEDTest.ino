@@ -7,34 +7,47 @@
 CRGB ledsLeft[NUM_LEDS]; //Set up block of memory for storing and
                          //manipulating led data
 int bright;
+int vol;
+int col;
+int val;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(A0, INPUT);
+  
   pinMode(A4, INPUT);
+  pinMode(A3, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A0, INPUT);
    
   //This tells the library theres a strand of Neopixels at pin 6
   //The strip will use the led array and has NUM_LEDS leds
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(ledsLeft, NUM_LEDS);
+  
   bright = 1;
+  vol = 0;
+  col = 0;
+  val = 0;
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
+  vol = (analogRead(A2))/8 + 133;
+  col = (analogRead(A3))/4;
+  val = (analogRead(A1))/4;
+
+  int full = analogRead(A4);
+  int freq = analogRead(A0);
+
+  //Update all leds to be #updateLEDS from before
   for(int i = NUM_LEDS - 1; i >= updateLEDS; i--)
   {
     ledsLeft[i] = ledsLeft[i - updateLEDS];
-    //ledsRight[i] = ledsRight[i - updateLEDS];
   }
 
-  int full = analogRead(A4);
-  //Serial.println((full+1)/4);//map volume to 0-255
-
-  //160 is good
-  //190 is good
-  if((full + 1)/4 > 170)//The value you compare it to is based on preference
+  if((full + 1)/4 > vol)
   {
     bright = 1;
   }
@@ -42,19 +55,14 @@ void loop() {
   {
     bright = 0;
   }
-  //Serial.println(bright);
-  int freq = analogRead(A0);
-  
-  //The +no is just for me since i want certain songs to be 
-  //of a certain color for certain songs, you can play with it
-  //100 is good
-  //215 is good
-  CHSV newColor((freq+155)%255, 255, 255*bright); 
+
+  CHSV newColor((freq+col)%255, 255, val*bright);//255*bright); 
   CRGB ledColor;
 
   //Convert from HSV to RGB color space
   hsv2rgb_rainbow(newColor, ledColor);
-  //outputColor(ledColor);
+
+  //Set all the colors in the LED strip up to #updateLEDS
   for(int i = 0; i < updateLEDS; i++)
   {
     ledsLeft[i] = CRGB(ledColor[0], ledColor[1], ledColor[2]);
@@ -62,9 +70,10 @@ void loop() {
 
   FastLED.show();
 
-  delay(1);
+  //delay(1);
 }
 
+//Ouput frequeny and volume values
 void outputVal(int freq, int full)
 {
   Serial.print("Freq: ");
@@ -73,6 +82,7 @@ void outputVal(int freq, int full)
   Serial.println(full);
 }
 
+//Output color values in RGB 
 void outputColor(CRGB ledColor)
 {
   Serial.print(ledColor[0]);
@@ -80,4 +90,15 @@ void outputColor(CRGB ledColor)
   Serial.print(ledColor[1]);
   Serial.print(' ');
   Serial.println(ledColor[2]);
+}
+
+//Output pot values that control color tune, animation tune, and brightness value
+void outputPots(int col, int animation, int brightness)
+{
+  Serial.print("Color Tune: ");
+  Serial.println(col);
+  Serial.print("Animation: ");
+  Serial.println(animation);
+  Serial.print("Brightness Level: ");
+  Serial.println(brightness);
 }

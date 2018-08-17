@@ -6,15 +6,23 @@
 
 CRGB ledsLeft[NUM_LEDS]; //Set up block of memory for storing and
                          //manipulating led data
+
+//Check which color range, mod values
+int States[8] = {0, 8, 22, 89, 60, 84, 81, 45}; 
+int Incr[8] = {0, 0, 17, 39, 95, 128, 174, 210}; 
+//Normal, Red, Orange-Yellow, Yellow-LightBlue, Green-Blue, LightBlue-Lavender, Blue-Pink, Pink-Red
+
 int bright;
 int vol;
 int col;
-int val;
+int sta;
+int light;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  
+
+  pinMode(A5, INPUT);
   pinMode(A4, INPUT);
   pinMode(A3, INPUT);
   pinMode(A2, INPUT);
@@ -28,7 +36,8 @@ void setup() {
   bright = 1;
   vol = 0;
   col = 0;
-  val = 0;
+  sta = 0;
+  light = 0;
 }
 
 void loop() {
@@ -36,7 +45,8 @@ void loop() {
 
   vol = (analogRead(A2))/8 + 133;
   col = (analogRead(A3))/4;
-  val = (analogRead(A1))/4;
+  sta = (analogRead(A1))/128;
+  light = (analogRead(A5))/4;
 
   int full = analogRead(A4);
   int freq = analogRead(A0);
@@ -56,7 +66,16 @@ void loop() {
     bright = 0;
   }
 
-  CHSV newColor((freq+col)%255, 255, val*bright);//255*bright); 
+  CHSV newColor;
+  if(sta == 0)
+  {
+    newColor = CHSV((freq+col)%255, 255, 255*bright);//255*bright); 
+  }
+  else
+  {
+    newColor = CHSV((freq%States[sta])+Incr[sta], 255, 255*bright);
+  }
+  //CHSV newColor((freq+col)%255, 255, 255*bright);//255*bright); 
   CRGB ledColor;
 
   //Convert from HSV to RGB color space

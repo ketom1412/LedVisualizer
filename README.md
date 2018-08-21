@@ -9,7 +9,8 @@ I have added in four 1k potentiometers to control the animation, color tune, col
 
 I have also attached a video of a demo of the working project!
 
-I also plan on designing a PCB board for the circuit I used to make it cleaner and easier to reproduce.
+I have created a PCB for my project using this site: https://easyeda.com/
+It's pretty straight forward and its relatively cheap to print out.
 
 Note:
 I won't be adding in the full circuit diagram since I believe if you want to reproduce this project its important to understand how this circuit works. This involves looking at the resources provided, researching, and testing it out.

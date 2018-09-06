@@ -16,7 +16,7 @@ int bright;
 int vol;
 int col;
 int sta;
-int light;
+int pause;
 
 void setup() {
   // put your setup code here, to run once:
@@ -37,7 +37,7 @@ void setup() {
   vol = 0;
   col = 0;
   sta = 0;
-  light = 0;
+  pause = 0;
 }
 
 void loop() {
@@ -46,10 +46,25 @@ void loop() {
   vol = (analogRead(A2))/8 + 133;
   col = (analogRead(A3))/4;
   sta = (analogRead(A1))/128;
-  light = (analogRead(A5))/4;
+  pause = (analogRead(A5))/4;
 
   int full = analogRead(A4);
   int freq = analogRead(A0);
+  //Serial.print("Freq ");
+  //Serial.println(freq);
+  Serial.print("Full ");
+  Serial.println(full);
+  Serial.print("Vol ");
+  Serial.println(vol);
+
+//  Serial.print(analogRead(A2));
+//  Serial.print(" A2 ");
+//  Serial.print(analogRead(A3));
+//  Serial.print(" A3 ");
+//  Serial.print(analogRead(A1));
+//  Serial.print(" A1 ");
+//  Serial.print(analogRead(A5));
+//  Serial.println(" A5 ");
 
   //Update all leds to be #updateLEDS from before
   for(int i = NUM_LEDS - 1; i >= updateLEDS; i--)
@@ -69,17 +84,18 @@ void loop() {
   CHSV newColor;
   if(sta == 0)
   {
-    newColor = CHSV((freq+col)%255, 255, 255*bright);//255*bright); 
+    newColor = CHSV((freq + col)%255, 255, 255*bright);//255*bright); //freq + col
   }
   else
   {
     newColor = CHSV((freq%States[sta])+Incr[sta], 255, 255*bright);
   }
-  //CHSV newColor((freq+col)%255, 255, 255*bright);//255*bright); 
+
   CRGB ledColor;
 
   //Convert from HSV to RGB color space
   hsv2rgb_rainbow(newColor, ledColor);
+  //outputColor(ledColor);
 
   //Set all the colors in the LED strip up to #updateLEDS
   for(int i = 0; i < updateLEDS; i++)
@@ -89,7 +105,7 @@ void loop() {
 
   FastLED.show();
 
-  //delay(1);
+  delay(pause*4);
 }
 
 //Ouput frequeny and volume values

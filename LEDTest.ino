@@ -1,6 +1,6 @@
 #include "FastLED.h"
 
-#define NUM_LEDS 300 //Number of LEDS in strip
+#define NUM_LEDS 600 //Number of LEDS in strip
 #define DATA_PIN 6 //Pin to transfer data to led strip for left
 #define updateLEDS 5 //distance between each strand of led
 
@@ -17,11 +17,13 @@ int vol;
 int col;
 int sta;
 int pause;
+int look;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
+  pinMode(A6, INPUT);
   pinMode(A5, INPUT);
   pinMode(A4, INPUT);
   pinMode(A3, INPUT);
@@ -38,6 +40,7 @@ void setup() {
   col = 0;
   sta = 0;
   pause = 0;
+  look = 0;
 }
 
 void loop() {
@@ -46,25 +49,28 @@ void loop() {
   vol = (analogRead(A2))/8 + 133;
   col = (analogRead(A3))/4;
   sta = (analogRead(A1))/128;
-  pause = (analogRead(A5))/4;
+  pause = (analogRead(A5));
+  look = (analogRead(A6) + 1)/4;
+  
 
   int full = analogRead(A4);
   int freq = analogRead(A0);
-  //Serial.print("Freq ");
-  //Serial.println(freq);
-  Serial.print("Full ");
+  Serial.print("Freq ");
+  Serial.print(freq);
+  Serial.print(" Full ");
   Serial.println(full);
-  Serial.print("Vol ");
-  Serial.println(vol);
-
-//  Serial.print(analogRead(A2));
-//  Serial.print(" A2 ");
-//  Serial.print(analogRead(A3));
-//  Serial.print(" A3 ");
-//  Serial.print(analogRead(A1));
+//  Serial.print(" Vol ");
+//  Serial.println(vol);
+//  Serial.print(sta);
 //  Serial.print(" A1 ");
-//  Serial.print(analogRead(A5));
-//  Serial.println(" A5 ");
+//  Serial.print(vol);
+//  Serial.print(" A2 ");
+//  Serial.print(col);
+//  Serial.print(" A3 ");
+//  Serial.print(pause);
+//  Serial.print(" A5 ");
+//  Serial.print(look);
+//  Serial.println(" A6 ");
 
   //Update all leds to be #updateLEDS from before
   for(int i = NUM_LEDS - 1; i >= updateLEDS; i--)
@@ -80,15 +86,16 @@ void loop() {
   {
     bright = 0;
   }
-
+  //Serial.println((full + 1)/4);
   CHSV newColor;
+
   if(sta == 0)
   {
-    newColor = CHSV((freq + col)%255, 255, 255*bright);//255*bright); //freq + col
+    newColor = CHSV((freq + col)%255, 255, look*bright);//255*bright); //freq + col
   }
   else
   {
-    newColor = CHSV((freq%States[sta])+Incr[sta], 255, 255*bright);
+    newColor = CHSV((freq%States[sta])+Incr[sta], 255, look*bright);
   }
 
   CRGB ledColor;
@@ -105,7 +112,7 @@ void loop() {
 
   FastLED.show();
 
-  delay(pause*4);
+  delay(pause);
 }
 
 //Ouput frequeny and volume values

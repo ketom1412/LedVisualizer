@@ -33,9 +33,6 @@ https://www.amazon.com/gp/product/B01GD4ZQRS/ref=oh_aui_detailpage_o00_s00?ie=UT
 Circuit requires 12V power supply:
 http://mathscinotes.com/2014/03/a-simple-frequency-to-voltage-converter/
 
-Youtube Video that inspired me:
-https://www.youtube.com/watch?v=lU1GVVU9gLU
-
 
 Other Resources:
 
